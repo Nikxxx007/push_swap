@@ -1,6 +1,7 @@
 #include "libft.h"
+#include "../includes/push_swap.h"
 
-int	ft_atoi(const char *str)
+int ft_atoi(const char *str, int **arr)
 {
 	unsigned int	new;
 	int				minus;
@@ -19,11 +20,7 @@ int	ft_atoi(const char *str)
 		str++;
 		if ((new > 2147483647 && minus == 1)
 			|| (new > 2147483648 && minus == -1))
-		{
-			if (minus == 1)
-				return (-1);
-			return (0);
-		}
+			er_prog_exit(arr);
 	}
 	return ((int)(new * minus));
 }

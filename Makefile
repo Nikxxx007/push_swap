@@ -1,6 +1,13 @@
 CC		= gcc
 NAME	= push_swap
-SRCS	= src/main.c
+SRCS	= src/main.c \
+			src/long_sort.c \
+			src/short_sort.c \
+			src/sort_array.c \
+			src/lst_utils/new_node.c \
+			src/lst_utils/commands.c \
+			src/algo_utils/search.c
+
 
 OBJS		= $(SRCS:.c=.o)
 
