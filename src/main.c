@@ -1,25 +1,6 @@
 #include "../includes/push_swap.h"
 
-void er_prog_exit(int **arr)
-{
-	printf("Incorrect in values");
-	free(*arr);
-	exit(1);
-}
 
-void print_list(t_list *head)
-{
-	t_list *tmp;
-	int i = 0;
-
-	tmp = head;
-	while (tmp)
-	{
-		printf("%d %d \n", tmp->val, tmp->order);
-		i++;
-		tmp = tmp->next;
-	}
-}
 
 int	check_dubl(int **arr, int j)
 {
@@ -48,7 +29,7 @@ int	is_valid(char **argv, int **arr)
 		i = 0;
 		while ((*argv)[i])
 		{
-			if (!(((*argv)[i] >= '0' && (*argv)[i] <= '9') || (*argv)[i] == '-'))
+			if (!(((*argv)[i] >= '0' && (*argv)[i] <= '9') || (*argv)[i] == '-' || (*argv)[i] == '+'))
 				check = 1;
 			i++;
 		}
@@ -62,19 +43,7 @@ int	is_valid(char **argv, int **arr)
 	return (1);
 }
 
-void	create_list(int *arr, t_list **head)
-{
-	t_list	*tmp;
-	int		i;
 
-	i = 0;
-	while (arr[i])
-	{
-		tmp = new_node(arr[i], 0);
-		ft_lstadd_back(head, tmp);
-		i++;
-	}
-}
 
 void	add_order(t_list *head, int *arr)
 {
@@ -92,23 +61,6 @@ void	add_order(t_list *head, int *arr)
 	}
 }
 
-int	is_sorted(t_list *head)
-{
-	t_list	*tmp;
-	int		i;
-
-	tmp = head;
-	i = tmp->order;
-	while (tmp)
-	{
-		if (tmp->order != i)
-			return (0);
-		i++;
-		tmp = tmp->next;
-	}
-	return (1);
-}
-
 void list_sort(int list_len, t_list **head_a, t_list **head_b)
 {
 	if (!(is_sorted(*head_a)))
@@ -120,32 +72,20 @@ void list_sort(int list_len, t_list **head_a, t_list **head_b)
 	}
 }
 
-void	freeList(t_list **head)
-{
-	t_list	*tmp;
-
-	while (*head != NULL)
-	{
-		tmp = *head;
-		*head = (*head)->next;
-		free(tmp);
-	}
-}
-
 int main(int argc, char **argv)
 {
-	int i;
 	int *in_vals;
 	t_list *head_a = NULL;
 	t_list *head_b = NULL;
 
-	i = 0;
 	in_vals = (int *) malloc(sizeof(int *) * (argc - 1));
 	if (!in_vals)
 		return (0);
 	if (argc < 2)
 		er_prog_exit(&in_vals);
-	if (!(is_valid(argv + 1, &in_vals)))
+	if (argc == 2)
+		pars_string(argv + 1, &in_vals, &argc);//TODO make argc + 1
+	else if (!(is_valid(argv + 1, &in_vals)))
 		er_prog_exit(&in_vals);
 	create_list(in_vals, &head_a);
 	quick_sort(&in_vals, 0, argc - 1);

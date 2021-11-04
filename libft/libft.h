@@ -24,7 +24,7 @@ char	*ft_strdup(const char *str);
 char	*ft_strtrim(char const *s1, char const *set);
 char	**ft_split(char const *s, char c);
 char	*ft_itoa(int n);
-int ft_atoi(const char *str, int **arr);
+int		ft_atoi(const char *str, int **arr);
 int		ft_isalpha(int ch);
 int		ft_isdigit(int ch);
 int		ft_isalnum(int c);

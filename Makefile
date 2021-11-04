@@ -6,7 +6,11 @@ SRCS	= src/main.c \
 			src/sort_array.c \
 			src/lst_utils/new_node.c \
 			src/lst_utils/commands.c \
-			src/algo_utils/search.c
+			src/lst_utils/free_list.c \
+			src/algo_utils/search.c \
+			src/algo_utils/exit.c \
+			src/algo_utils/is_sorted.c \
+			src/parse_string/string_utils.c
 
 
 OBJS		= $(SRCS:.c=.o)

@@ -41,8 +41,15 @@ int		max_in(t_list *head, int pass);
 int		min(t_list *head);
 int		pivot(t_list *head, int len, int max_len);
 
-int	is_sorted(t_list *head);
+int		is_sorted(t_list *head);
 
-void print_list(t_list *head);
+void	freeList(t_list **head);
+
+int		is_valid(char **argv, int **arr);
+
+t_list	*new_node(int value, int order);
+void	create_list(int *arr, t_list **head);
+
+void	pars_string(char **argv, int **arr, int *len);
 
 #endif
