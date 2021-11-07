@@ -1,7 +1,5 @@
 #include "../includes/push_swap.h"
 
-
-
 int	check_dubl(int **arr, int j)
 {
 	int k;
@@ -84,7 +82,7 @@ int main(int argc, char **argv)
 	if (argc < 2)
 		er_prog_exit(&in_vals);
 	if (argc == 2)
-		pars_string(argv + 1, &in_vals, &argc);//TODO make argc + 1
+		pars_string(argv + 1, &in_vals, &argc);
 	else if (!(is_valid(argv + 1, &in_vals)))
 		er_prog_exit(&in_vals);
 	create_list(in_vals, &head_a);
@@ -93,5 +91,5 @@ int main(int argc, char **argv)
 	free(in_vals);
 	list_sort(argc - 1, &head_a, &head_b);
 	freeList(&head_a);
-	return 0;
+	return (0);
 }
