@@ -2,7 +2,7 @@
 
 int	check_dubl(int **arr, int j)
 {
-	int k;
+	int	k;
 
 	k = j - 2;
 	while (k >= 0)
@@ -17,7 +17,7 @@ int	check_dubl(int **arr, int j)
 int	is_valid(char **argv, int **arr)
 {
 	int	i;
-	int j;
+	int	j;
 	int	check;
 
 	check = 0;
@@ -27,7 +27,8 @@ int	is_valid(char **argv, int **arr)
 		i = 0;
 		while ((*argv)[i])
 		{
-			if (!(((*argv)[i] >= '0' && (*argv)[i] <= '9') || (*argv)[i] == '-' || (*argv)[i] == '+'))
+			if (!(((*argv)[i] >= '0' && (*argv)[i] <= '9')
+				|| (*argv)[i] == '-' || (*argv)[i] == '+'))
 				check = 1;
 			i++;
 		}
@@ -41,12 +42,10 @@ int	is_valid(char **argv, int **arr)
 	return (1);
 }
 
-
-
 void	add_order(t_list *head, int *arr)
 {
-	t_list *tmp;
-	int i;
+	t_list	*tmp;
+	int		i;
 
 	tmp = head;
 	while (tmp)
@@ -59,7 +58,7 @@ void	add_order(t_list *head, int *arr)
 	}
 }
 
-void list_sort(int list_len, t_list **head_a, t_list **head_b)
+void	list_sort(int list_len, t_list **head_a, t_list **head_b)
 {
 	if (!(is_sorted(*head_a)))
 	{
@@ -70,13 +69,15 @@ void list_sort(int list_len, t_list **head_a, t_list **head_b)
 	}
 }
 
-int main(int argc, char **argv)
+int	main(int argc, char **argv)
 {
-	int *in_vals;
-	t_list *head_a = NULL;
-	t_list *head_b = NULL;
+	int		*in_vals;
+	t_list	*head_a;
+	t_list	*head_b;
 
-	in_vals = (int *) malloc(sizeof(int *) * (argc - 1));
+	head_a = NULL;
+	head_b = NULL;
+	in_vals = (int *) malloc(sizeof(int) * (argc - 1));
 	if (!in_vals)
 		return (0);
 	if (argc < 2)
@@ -85,7 +86,7 @@ int main(int argc, char **argv)
 		pars_string(argv + 1, &in_vals, &argc);
 	else if (!(is_valid(argv + 1, &in_vals)))
 		er_prog_exit(&in_vals);
-	create_list(in_vals, &head_a);
+	create_list(in_vals, &head_a, argc - 1);
 	quick_sort(&in_vals, 0, argc - 1);
 	add_order(head_a, in_vals);
 	free(in_vals);

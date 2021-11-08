@@ -3,21 +3,21 @@
 void	start_sort(t_list **head_a, t_list **head_b, int list_len)
 {
 	int	i;
-	int j;
+	int	j;
 
 	i = 0;
 	while (i++ < 2)
 	{
-		 j = 0;
-		 if (position(*head_a, min(*head_a)) < list_len - 2)
-			 j = 1;
-		 while ((*head_a)->order != min(*head_a))
-		 {
-			 if (j)
-				 rotate(head_a, head_b, 'a');
-			 else
-				 reverse_rotate(head_a, head_b, 'a');
-		 }
+		j = 0;
+		if (position(*head_a, min(*head_a)) < list_len - 2)
+			j = 1;
+		while ((*head_a)->order != min(*head_a))
+		{
+			if (j)
+				rotate(head_a, head_b, 'a');
+			else
+				reverse_rotate(head_a, head_b, 'a');
+		}
 		push_to(head_b, head_a, 'b');
 	}
 }

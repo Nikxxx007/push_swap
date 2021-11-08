@@ -1,8 +1,8 @@
 #include "../../includes/push_swap.h"
 
-void freeTokens(char** tokens)
+void	freeTokens(char **tokens)
 {
-	char **freeTokens;
+	char	**freeTokens;
 
 	freeTokens = tokens;
 	while (*freeTokens != NULL)
@@ -34,7 +34,7 @@ void	to_arr(char **argv, int **arr, int *len)
 void	pars_string(char **argv, int **arr, int *len)
 {
 	int	i;
-	int spaces;
+	int	spaces;
 
 	i = 0;
 	spaces = 0;

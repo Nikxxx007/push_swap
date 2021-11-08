@@ -1,12 +1,12 @@
 #include "../../includes/push_swap.h"
 
-void	create_list(int *arr, t_list **head)
+void	create_list(int *arr, t_list **head, int len)
 {
 	t_list	*tmp;
 	int		i;
 
 	i = 0;
-	while (arr[i])
+	while (i < len)
 	{
 		tmp = new_node(arr[i], 0);
 		ft_lstadd_back(head, tmp);

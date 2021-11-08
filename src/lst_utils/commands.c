@@ -2,11 +2,11 @@
 
 void	swap_first_two(t_list **head, t_list **head1, char cmd)
 {
-	t_list *tmp1;
-	t_list *tmp2;
+	t_list	*tmp1;
+	t_list	*tmp2;
 
-	tmp1 = *head; //first->second
-	tmp2 = tmp1->next; //second->first
+	tmp1 = *head;
+	tmp2 = tmp1->next;
 	tmp1->next = tmp2->next;
 	ft_lstadd_front(head, tmp2);
 	if (cmd == 'a')
@@ -18,12 +18,11 @@ void	swap_first_two(t_list **head, t_list **head1, char cmd)
 		write(1, "ss\n", 3);
 		rotate(head1, head, 'n');
 	}
-
 }
 
-void 	push_to(t_list **head1, t_list **head, char cmd)
+void	push_to(t_list **head1, t_list **head, char cmd)
 {
-	t_list *tmp;
+	t_list	*tmp;
 
 	tmp = *head;
 	*head = tmp->next;
@@ -34,9 +33,9 @@ void 	push_to(t_list **head1, t_list **head, char cmd)
 		write(1, "pb\n", 3);
 }
 
-void 	rotate(t_list **head, t_list **head1, char cmd)
+void	rotate(t_list **head, t_list **head1, char cmd)
 {
-	t_list *tmp;
+	t_list	*tmp;
 
 	tmp = *head;
 	*head = tmp->next;
@@ -55,8 +54,8 @@ void 	rotate(t_list **head, t_list **head1, char cmd)
 
 void	reverse_rotate(t_list **head, t_list **head1, char cmd)
 {
-	t_list *tmp;
-	t_list *tmp_last;
+	t_list	*tmp;
+	t_list	*tmp_last;
 
 	tmp = *head;
 	while (tmp->next->next)

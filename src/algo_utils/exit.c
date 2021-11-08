@@ -1,8 +1,8 @@
 #include "../../includes/push_swap.h"
 
-void er_prog_exit(int **arr)
+void	er_prog_exit(int **arr)
 {
-	printf("Incorrect in values");
+	write(2, "Incorrect in values", 19);
 	free(*arr);
 	exit(1);
 }

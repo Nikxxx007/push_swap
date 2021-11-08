@@ -3,8 +3,8 @@
 
 int	minus_plus(const char **str, int **arr)
 {
-	int plus;
-	int minus;
+	int	plus;
+	int	minus;
 
 	plus = 0;
 	minus = 0;
@@ -23,12 +23,11 @@ int	minus_plus(const char **str, int **arr)
 	return (1);
 }
 
-int		ft_atoi(const char *str, int **arr)
+int	ft_atoi(const char *str, int **arr)
 {
 	unsigned int	new;
 	int				minus;
 	size_t			len;
-
 
 	new = 0;
 	minus = minus_plus(&str, arr);

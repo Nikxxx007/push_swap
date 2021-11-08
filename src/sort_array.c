@@ -1,8 +1,8 @@
 #include "../includes/push_swap.h"
 
-void swap_vals(int *val, int *val1)
+void	swap_vals(int *val, int *val1)
 {
-	int tmp;
+	int	tmp;
 
 	if (*val != *val1)
 	{
@@ -34,7 +34,7 @@ int	partition(int **arr, int low, int high)
 	return (i - 1);
 }
 
-void quick_sort(int **arr, int low, int high)
+void	quick_sort(int **arr, int low, int high)
 {
 	int	pivot_location;
 
@@ -45,4 +45,3 @@ void quick_sort(int **arr, int low, int high)
 		quick_sort(arr, pivot_location + 1, high);
 	}
 }
-

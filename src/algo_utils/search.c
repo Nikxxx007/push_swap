@@ -15,11 +15,10 @@ int	position(t_list *head, int val)
 	return (pos);
 }
 
-
-int max_in(t_list *head, int pass)
+int	max_in(t_list *head, int pass)
 {
 	t_list	*tmp;
-	int 	max;
+	int		max;
 
 	tmp = head;
 	max = tmp->order;
@@ -37,10 +36,10 @@ int max_in(t_list *head, int pass)
 	return (max);
 }
 
-int min(t_list *head)
+int	min(t_list *head)
 {
 	t_list	*tmp;
-	int 	min;
+	int		min;
 
 	tmp = head;
 	min = tmp->order;
@@ -60,8 +59,8 @@ int	pivot(t_list *head, int len, int max_len)
 {
 	t_list	*tmp;
 	int		i;
-	int 	j;
-	int 	*arr;
+	int		j;
+	int		*arr;
 
 	tmp = head;
 	i = 0;
@@ -81,13 +80,6 @@ int	pivot(t_list *head, int len, int max_len)
 	while (j < (len / 2) - 1)
 		j++;
 	j = arr[j];
-
-//	int k = 0;
-//	while (k < len)
-//		printf("%d", arr[k++]);
-//	printf("\n");
-//	printf("%d", j);
-//	printf("\n");
 	free(arr);
 	return (j);
 }

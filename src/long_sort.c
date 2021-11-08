@@ -2,7 +2,7 @@
 
 void	push_back(t_list **head_a, t_list **head_b, int max, t_sort **sort)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	if ((*head_b)->order < max)
@@ -26,6 +26,21 @@ void	push_back(t_list **head_a, t_list **head_b, int max, t_sort **sort)
 		push_to(head_a, head_b, 'a');
 }
 
+void	sort_util(t_list **head_a, t_list **head_b, t_sort **sort)
+{
+	if ((*sort)->flag_a == (*sort)->flag_b && (((*sort)->pos_a > (*sort)->pos_b
+				&& (*sort)->flag_a) || ((*sort)->pos_a < (*sort)->pos_b
+				&& !(*sort)->flag_a)))
+	{
+		push_back(head_a, head_b, (*sort)->max_a, sort);
+		push_back(head_a, head_b, (*sort)->max_b, sort);
+		swap_first_two(head_a, head_b, 'a');
+		(*sort)->len_b--;
+	}
+	else
+		push_back(head_a, head_b, (*sort)->max_b, sort);
+}
+
 void	add_to_a(t_list **head_a, t_list **head_b, t_sort **sort)
 {
 	while ((*sort)->len_b)
@@ -41,17 +56,7 @@ void	add_to_a(t_list **head_a, t_list **head_b, t_sort **sort)
 		if ((*sort)->pos_b < (*sort)->len_b / 2)
 			(*sort)->flag_b = 1;
 		(*sort)->flags = (*sort)->flag_a;
-		if ((*sort)->flag_a == (*sort)->flag_b &&
-				(((*sort)->pos_a > (*sort)->pos_b && (*sort)->flag_a) ||
-				((*sort)->pos_a < (*sort)->pos_b && !(*sort)->flag_a)))
-		{
-			push_back(head_a, head_b, (*sort)->max_a, sort);
-			push_back(head_a, head_b, (*sort)->max_b, sort);
-			swap_first_two(head_a, head_b, 'a');
-			(*sort)->len_b--;
-		}
-		else
-			push_back(head_a, head_b, (*sort)->max_b, sort);
+		sort_util(head_a, head_b, sort);
 		(*sort)->len_b--;
 	}
 }
@@ -63,9 +68,9 @@ void	rotation(int safe, t_list **head_a, t_list **head_b, t_sort **sort)
 		if ((*head_a)->order <= (*sort)->pivot)
 		{
 			push_to(head_b, head_a, 'b');
-//			(*sort)->len_b++;
-			if ((*head_b)->order < pivot(*head_b, (*sort)->len_b, (*sort)->max_len) &&
-					(*sort)->len_b > 1)
+			if ((*head_b)->order
+				< pivot(*head_b, (*sort)->len_b, (*sort)->max_len)
+				&& (*sort)->len_b > 1)
 			{
 				if ((*head_a)->order > (*sort)->pivot)
 					rotate(head_a, head_b, 'r');
@@ -81,7 +86,7 @@ void	rotation(int safe, t_list **head_a, t_list **head_b, t_sort **sort)
 	}
 }
 
-int long_sort(t_list **head_a, t_list **head_b, int list_len)
+int	long_sort(t_list **head_a, t_list **head_b, int list_len)
 {
 	int		safe;
 	t_sort	*sort;
