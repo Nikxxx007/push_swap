@@ -7,6 +7,8 @@
 
 # include "../libft/libft.h"
 
+# define BUFF_SIZE 1
+
 typedef struct s_sort
 {
 	int			max_len;
@@ -51,5 +53,16 @@ t_list	*new_node(int value, int order);
 void	create_list(int *arr, t_list **head, int len);
 
 void	pars_string(char **argv, int **arr, int *len);
+
+
+void	cmd_reader(t_list **head_a, t_list **head_b);
+int		get_next_line(int const fd, char **line);
+void	check_arr(int **arr);
+void	is_empty(char **argv, int **arr);
+
+void	swap_first_two_c(t_list **head, t_list **head1, char cmd);
+void	push_to_c(t_list **head1, t_list **head);
+void	rotate_c(t_list **head, t_list **head1, char cmd);
+void	reverse_rotate_c(t_list **head, t_list **head1, char cmd);
 
 #endif

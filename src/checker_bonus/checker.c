@@ -1,4 +1,4 @@
-#include "../includes/push_swap.h"
+#include "../../includes/push_swap.h"
 
 int	check_dubl(int **arr, int j)
 {
@@ -28,7 +28,7 @@ int	is_valid(char **argv, int **arr)
 		while ((*argv)[i])
 		{
 			if (!(((*argv)[i] >= '0' && (*argv)[i] <= '9')
-				|| (*argv)[i] == '-' || (*argv)[i] == '+'))
+				  || (*argv)[i] == '-' || (*argv)[i] == '+'))
 				check = 1;
 			i++;
 		}
@@ -58,17 +58,6 @@ void	add_order(t_list *head, int *arr)
 	}
 }
 
-void	list_sort(int list_len, t_list **head_a, t_list **head_b)
-{
-	if (!(is_sorted(*head_a)))
-	{
-		if (list_len > 8)
-			long_sort(head_a, head_b, list_len);
-		else
-			short_sort(head_a, head_b, list_len);
-	}
-}
-
 int	main(int argc, char **argv)
 {
 	int		*in_vals;
@@ -87,11 +76,12 @@ int	main(int argc, char **argv)
 		pars_string(argv + 1, &in_vals, &argc);
 	else if (!(is_valid(argv + 1, &in_vals)))
 		er_prog_exit(&in_vals);
+	check_arr(&in_vals);
 	create_list(in_vals, &head_a, argc - 1);
 	quick_sort(&in_vals, 0, argc - 1);
 	add_order(head_a, in_vals);
 	free(in_vals);
-	list_sort(argc - 1, &head_a, &head_b);
-	freeList(&head_a);
+	cmd_reader(&head_a, &head_b);
+	while (1);
 	return (0);
 }
