@@ -1,71 +1,63 @@
 #include "../../includes/push_swap.h"
 
-int	gnl_verify_line(char **stack, char **line)
+int	appendline(char **s, char **line)
 {
-	char			*tmp_stack;
-	char			*strchr_stack;
-	int				i;
+	int		len;
+	char	*tmp;
 
-	i = 0;
-	strchr_stack = *stack;
-	while (strchr_stack[i] != '\n')
-		if (!strchr_stack[i++])
-			return (0);
-	tmp_stack = &strchr_stack[i];
-	*tmp_stack = '\0';
-	*line = ft_strdup(*stack);
-	*stack = ft_strdup(tmp_stack + 1);
+	len = 0;
+	while ((*s)[len] != '\n' && (*s)[len] != '\0')
+		len++;
+	if ((*s)[len] == '\n')
+	{
+		*line = ft_strsub(*s, 0, len);
+		tmp = ft_strdup(&((*s)[len + 1]));
+		free(*s);
+		*s = tmp;
+		if ((*s)[0] == '\0')
+			ft_strdel(s);
+	}
+	else
+	{
+		*line = ft_strdup(*s);
+		ft_strdel(s);
+	}
 	return (1);
 }
 
-int	gnl_read_file(int fd, char *heap, char **stack, char **line)
-{
-	int				ret;
-	char			*tmp_stack;
 
-	while ((ret = read(fd, heap, BUFF_SIZE)) > 0)
+static int	output(char **s, char **line, int ret, int fd)
+{
+	if (ret < 0)
+		return (-1);
+	else if (ret == 0 && s[fd] == NULL)
+		return (0);
+	else
+		return (appendline(&s[fd], line));
+}
+
+int			get_next_line(const int fd, char **line)
+{
+	int			ret;
+	static char	*s[4096];
+	char		buff[BUFF_SIZE + 1];
+	char		*tmp;
+
+	if (fd < 0 || line == NULL)
+		return (-1);
+	while ((ret = read(fd, buff, BUFF_SIZE)) > 0)
 	{
-		heap[ret] = '\0';
-		if (*stack)
-		{
-			tmp_stack = *stack;
-			*stack = ft_strjoin(tmp_stack, heap);
-			free(tmp_stack);
-			tmp_stack = NULL;
-		}
+		buff[ret] = '\0';
+		if (s[fd] == NULL)
+			s[fd] = ft_strdup(buff);
 		else
-			*stack = ft_strdup(heap);
-		if (gnl_verify_line(stack, line))
+		{
+			tmp = ft_strjoin(s[fd], buff);
+			free(s[fd]);
+			s[fd] = tmp;
+		}
+		if (ft_strchr(s[fd], '\n'))
 			break ;
 	}
-	return (ret);
-}
-
-int	get_next_line(int const fd, char **line)
-{
-	static char		*stack[64000];
-	char			*heap;
-	int				ret;
-	int				i;
-
-	if (!line || (fd < 0 || fd >= 64000) || (read(fd, stack[fd], 0) < 0) \
-		|| !(heap = (char *)malloc(sizeof(char) * BUFF_SIZE + 1)))
-		return (-1);
-	if (stack[fd])
-		if (gnl_verify_line(&stack[fd], line))
-			return (1);
-	i = 0;
-	while (i < BUFF_SIZE)
-		heap[i++] = '\0';
-	ret = gnl_read_file(fd, heap, &stack[fd], line);
-	free(heap);
-	if (ret != 0 || stack[fd] == NULL || stack[fd][0] == '\0')
-	{
-		if (!ret && *line)
-			*line = NULL;
-		return (ret);
-	}
-	*line = stack[fd];
-	stack[fd] = NULL;
-	return (1);
+	return (output(s, line, ret, fd));
 }

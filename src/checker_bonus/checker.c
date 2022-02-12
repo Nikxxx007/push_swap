@@ -82,6 +82,5 @@ int	main(int argc, char **argv)
 	add_order(head_a, in_vals);
 	free(in_vals);
 	cmd_reader(&head_a, &head_b);
-	while (1);
 	return (0);
 }

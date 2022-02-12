@@ -7,7 +7,7 @@
 
 # include "../libft/libft.h"
 
-# define BUFF_SIZE 1
+# define BUFF_SIZE 8
 
 typedef struct s_sort
 {
@@ -65,4 +65,9 @@ void	push_to_c(t_list **head1, t_list **head);
 void	rotate_c(t_list **head, t_list **head1, char cmd);
 void	reverse_rotate_c(t_list **head, t_list **head1, char cmd);
 
+void	ft_free(char **str);
+char	*ft_strnew(size_t size);
+char	*ft_strsub(char const *s, unsigned int start, size_t len);
+void	ft_memdel(void **ap);
+void	ft_strdel(char **as);
 #endif

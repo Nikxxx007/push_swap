@@ -14,7 +14,7 @@ void	swap_first_two_c(t_list **head, t_list **head1, char cmd)
 	}
 	if (cmd == 'r')
 		if (*head1)
-			rotate_c(head1, head, 'n');
+			swap_first_two_c(head1, head, 'n');
 }
 
 void	push_to_c(t_list **head1, t_list **head)
@@ -61,5 +61,5 @@ void	reverse_rotate_c(t_list **head, t_list **head1, char cmd)
 	}
 	if (cmd == 'r')
 		if (*head1)
-			rotate_c(head1, head, 'n');
+			reverse_rotate_c(head1, head, 'n');
 }

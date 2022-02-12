@@ -27,7 +27,8 @@ SRCS_BONUS	= src/checker_bonus/checker.c \
 				src/sort_array.c \
 				src/parse_string/string_utils.c \
 				src/checker_bonus/correct_enter.c \
-				src/checker_bonus/commands_c.c
+				src/checker_bonus/commands_c.c \
+				src/checker_bonus/gnl_utils.c
 
 OBJS_BONUS	= $(SRCS_BONUS:.c=.o)
 

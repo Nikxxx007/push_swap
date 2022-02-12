@@ -7,6 +7,8 @@ int	is_sorted(t_list *head)
 
 	tmp = head;
 	i = 0;
+	if (!head)
+		return (0);
 	while (tmp)
 	{
 		if (tmp->order != i)
