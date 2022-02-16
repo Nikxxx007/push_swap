@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   get_next_line.c                                    :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: rogaynel <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/02/16 14:12:08 by rogaynel          #+#    #+#             */
+/*   Updated: 2022/02/16 14:49:35 by rogaynel         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../../includes/push_swap.h"
 
 int	appendline(char **s, char **line)
@@ -25,8 +37,7 @@ int	appendline(char **s, char **line)
 	return (1);
 }
 
-
-static int	output(char **s, char **line, int ret, int fd)
+int	output(char **s, char **line, int ret, int fd)
 {
 	if (ret < 0)
 		return (-1);
@@ -36,7 +47,7 @@ static int	output(char **s, char **line, int ret, int fd)
 		return (appendline(&s[fd], line));
 }
 
-int			get_next_line(const int fd, char **line)
+int	get_next_line(const int fd, char **line)
 {
 	int			ret;
 	static char	*s[4096];
@@ -45,7 +56,8 @@ int			get_next_line(const int fd, char **line)
 
 	if (fd < 0 || line == NULL)
 		return (-1);
-	while ((ret = read(fd, buff, BUFF_SIZE)) > 0)
+	ret = read(fd, buff, BUFF_SIZE);
+	while (ret > 0)
 	{
 		buff[ret] = '\0';
 		if (s[fd] == NULL)
@@ -58,6 +70,7 @@ int			get_next_line(const int fd, char **line)
 		}
 		if (ft_strchr(s[fd], '\n'))
 			break ;
+		ret = read(fd, buff, BUFF_SIZE);
 	}
 	return (output(s, line, ret, fd));
 }

@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   push_swap.h                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: rogaynel <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/02/16 14:50:05 by rogaynel          #+#    #+#             */
+/*   Updated: 2022/02/16 14:50:28 by rogaynel         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
 
@@ -45,7 +57,7 @@ int		pivot(t_list *head, int len, int max_len);
 
 int		is_sorted(t_list *head);
 
-void	freeList(t_list **head);
+void	free_list(t_list **head);
 
 int		is_valid(char **argv, int **arr);
 
@@ -53,7 +65,6 @@ t_list	*new_node(int value, int order);
 void	create_list(int *arr, t_list **head, int len);
 
 void	pars_string(char **argv, int **arr, int *len);
-
 
 void	cmd_reader(t_list **head_a, t_list **head_b);
 int		get_next_line(int const fd, char **line);
@@ -70,4 +81,5 @@ char	*ft_strnew(size_t size);
 char	*ft_strsub(char const *s, unsigned int start, size_t len);
 void	ft_memdel(void **ap);
 void	ft_strdel(char **as);
+int		final(t_list *head);
 #endif

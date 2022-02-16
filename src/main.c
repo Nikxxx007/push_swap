@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   main.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: rogaynel <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/02/16 14:10:20 by rogaynel          #+#    #+#             */
+/*   Updated: 2022/02/16 14:10:21 by rogaynel         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../includes/push_swap.h"
 
 int	check_dubl(int **arr, int j)
@@ -92,6 +104,6 @@ int	main(int argc, char **argv)
 	add_order(head_a, in_vals);
 	free(in_vals);
 	list_sort(argc - 1, &head_a, &head_b);
-	freeList(&head_a);
+	free_list(&head_a);
 	return (0);
 }

@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   gnl_utils.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: rogaynel <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/02/16 14:12:12 by rogaynel          #+#    #+#             */
+/*   Updated: 2022/02/16 14:21:20 by rogaynel         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../../includes/push_swap.h"
 
 char	*ft_strnew(size_t size)
@@ -48,6 +60,5 @@ void	ft_memdel(void **ap)
 void	ft_strdel(char **as)
 {
 	if (as != NULL && *as != NULL)
-		ft_memdel((void**)as);
+		ft_memdel((void **)as);
 }
-
