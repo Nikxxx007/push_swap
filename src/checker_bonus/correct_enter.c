@@ -12,16 +12,22 @@
 
 #include "../../includes/push_swap.h"
 
-void	check_arr(int **arr)
+void	check_one(t_list **head_a, t_list **head_b)
 {
-	int	len;
+	int		len;
+	t_list	*tmp;
 
 	len = 0;
-	while ((*arr)[len])
+	tmp = *head_a;
+	while (tmp)
+	{
+		tmp = tmp->next;
 		len++;
+	}
 	if (len == 1)
 	{
-		free(*arr);
+		free_list(head_a);
+		free_list(head_b);
 		exit(0);
 	}
 }

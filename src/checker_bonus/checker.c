@@ -88,11 +88,11 @@ int	main(int argc, char **argv)
 		pars_string(argv + 1, &in_vals, &argc);
 	else if (!(is_valid(argv + 1, &in_vals)))
 		er_prog_exit(&in_vals);
-	check_arr(&in_vals);
 	create_list(in_vals, &head_a, argc - 1);
 	quick_sort(&in_vals, 0, argc - 1);
 	add_order(head_a, in_vals);
 	free(in_vals);
+	check_one(&head_a, &head_b);
 	cmd_reader(&head_a, &head_b);
 	return (0);
 }

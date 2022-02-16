@@ -68,7 +68,7 @@ void	pars_string(char **argv, int **arr, int *len);
 
 void	cmd_reader(t_list **head_a, t_list **head_b);
 int		get_next_line(int const fd, char **line);
-void	check_arr(int **arr);
+void	check_one(t_list **head_a, t_list **head_b);
 void	is_empty(char **argv, int **arr);
 
 void	swap_first_two_c(t_list **head, t_list **head1, char cmd);
