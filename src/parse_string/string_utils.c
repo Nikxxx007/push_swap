@@ -56,13 +56,13 @@ void	pars_string(char **argv, int **arr, int *len)
 			spaces++;
 		i++;
 	}
+	if (spaces >= 1)
+		to_arr(argv, arr, len);
+	else if (!(is_valid(argv, arr)))
+		er_prog_exit(arr);
 	if (spaces == 0)
 	{
 		free(*arr);
 		exit(0);
 	}
-	if (spaces >= 1)
-		to_arr(argv, arr, len);
-	else if (!(is_valid(argv, arr)))
-		er_prog_exit(arr);
 }

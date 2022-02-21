@@ -12,13 +12,30 @@
 
 #include "../../includes/push_swap.h"
 
+int	nods_count(t_list **head_a)
+{
+	int		len;
+	t_list	*tmp;
+
+	len = 0;
+	tmp = *head_a;
+	while (tmp)
+	{
+		tmp = tmp->next;
+		len++;
+	}
+	if (len <= 1)
+		return (0);
+	return (1);
+}
+
 void	swap_first_two_c(t_list **head, t_list **head1, char cmd)
 {
 	t_list	*tmp1;
 	t_list	*tmp2;
 
 	tmp1 = *head;
-	if (*head)
+	if (*head && nods_count(head))
 	{
 		tmp2 = tmp1->next;
 		tmp1->next = tmp2->next;
@@ -46,7 +63,7 @@ void	rotate_c(t_list **head, t_list **head1, char cmd)
 	t_list	*tmp;
 
 	tmp = *head;
-	if (*head)
+	if (*head && nods_count(head))
 	{
 		*head = tmp->next;
 		tmp->next = NULL;
@@ -63,7 +80,7 @@ void	reverse_rotate_c(t_list **head, t_list **head1, char cmd)
 	t_list	*tmp_last;
 
 	tmp = *head;
-	if (*head)
+	if (*head && nods_count(head))
 	{
 		while (tmp->next->next)
 			tmp = tmp->next;

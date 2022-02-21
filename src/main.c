@@ -89,12 +89,12 @@ int	main(int argc, char **argv)
 
 	head_a = NULL;
 	head_b = NULL;
+	if (argc < 2)
+		return (0);
 	in_vals = (int *) malloc(sizeof(int) * (argc - 1));
 	if (!in_vals)
 		return (0);
 	is_empty(argv + 1, &in_vals);
-	if (argc < 2)
-		er_prog_exit(&in_vals);
 	if (argc == 2)
 		pars_string(argv + 1, &in_vals, &argc);
 	else if (!(is_valid(argv + 1, &in_vals)))
