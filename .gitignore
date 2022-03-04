@@ -1,4 +1,4 @@
 .idea/
-#CMakeLists.txt
 cmake-build-debug/
-libft/CMakeLists.txt
+.DS_Store
+
