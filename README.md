@@ -1,6 +1,6 @@
 # push_swap
 
-This project sort array of numbers using 2 stacks and build-in command
+This programm sort array of numbers using 2 stacks and build-in command
 
 There is also a checker programm for it
 
